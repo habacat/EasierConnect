@@ -31,7 +31,7 @@ func WebLogin(server string, username string, password string) (string, error) {
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		}}
 
-	addr := server + "/por/login_auth.csp?apiversion=1"
+	addr := server + "/portal/#!/login"
 	log.Printf("Login Request: %s", addr)
 
 	resp, err := c.Get(addr)
@@ -86,7 +86,7 @@ func WebLogin(server string, username string, password string) (string, error) {
 	encryptedPasswordHex := hex.EncodeToString(encryptedPassword)
 	log.Printf("Encrypted Password: %s", encryptedPasswordHex)
 
-	addr = server + "/por/login_psw.csp?anti_replay=1&encrypt=1&type=cs"
+	addr = server + "/portal/#!/login"
 	log.Printf("Login Request: %s", addr)
 
 	form := url.Values{
